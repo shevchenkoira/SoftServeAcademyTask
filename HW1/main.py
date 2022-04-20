@@ -24,10 +24,11 @@ def _is_prime(n):
         return True
     elif n % 2 == 0 or n < 2:
         return False
-    for i in range(3, int(n**0.5)+1, 2):
-        if n % i == 0:
-            return False
-    return True
+    else:
+        for i in range(3, int(n**0.5)+1, 2):
+            if n % i == 0:
+                return False
+        return True
 
 
 def check_possibility(n):
@@ -53,34 +54,37 @@ def check_pair(n):
 
 
 def task1(m, num = 4):
-    k = int(log(m-1, num))
-    print(k)
+    return int(log(m-1, num))
 
 
 def task2(n):
     if check_possibility(n):
         print("Here there are possible pairs present as (x, y)")
+        result_lst = []
         for i in find_pair(n).items():
-            print(i)
+            result_lst.append(i)
+        return result_lst
     else:
-        print("We can`t present your number as sums of two squares")
+        return "We can`t present your number as sums of two squares"
 
 
 def task3(n):
     if check_possibility(n):
         print("Here there are possible pairs present as (x, y)")
+        result_lst = []
         for i in check_pair(n).items():
-            print(i)
+            result_lst.append(i)
+        return result_lst
     else:
-        print("We can`t present your number as sums of two squares")
+        return "We can`t present your number as sums of two squares"
 
 
 if __name__ == "__main__":
     print(f"{'-'*15}Task1{'-'*15}")
     m = enter_number_task_1()
-    task1(m)
+    print(task1(m))
     print(f"{'-' * 15}Task2{'-' * 15}")
     n = enter_number_task_2_3()
-    task2(n)
+    print(task2(n))
     print(f"{'-' * 15}Task3{'-' * 15}")
-    task3(n)
+    print(task3(n))
