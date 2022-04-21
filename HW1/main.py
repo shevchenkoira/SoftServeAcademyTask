@@ -1,41 +1,33 @@
 from math import log
 
 
-def enter_number_task_1():
-    while True:
-        m = int(input("Enter number > 1: "))
-        if m <= 1:
-            print("Your number need to be more than 1. Enter again: ")
-        else:
-            return m
-
-
-def enter_number_task_2_3():
-    while True:
-        n = int(input("Enter prime number: "))
-        if not _is_prime(n):
-            print("Your number isn`t prime. Enter again: ")
-        else:
-            return n
+def validate_number(number, least=None, largest=None):
+    if not isinstance(number, int):
+        raise ValueError("Incorrect number")
+    if isinstance(least, int) and least >= int(number):
+        raise ValueError("Incorrect number")
+    elif isinstance(largest, int) and largest < int(number):
+        raise ValueError("Incorrect number")
+    else:
+        return int(number)
 
 
 def _is_prime(n):
     if n == 2 or n == 3:
         return True
-    elif n % 2 == 0 or n < 2:
-        return False
-    else:
-        for i in range(3, int(n**0.5)+1, 2):
-            if n % i == 0:
-                return False
-        return True
+    elif n % 2 == 0:
+        raise ValueError("Incorrect number")
+    for i in range(3, int(n ** 0.5) + 1, 2):
+        if n % i == 0:
+            raise ValueError("Incorrect number")
+    return True
 
 
 def check_possibility(n):
     return n % 4 == 1
 
 
-def find_pair(n):
+def find_pairs(n):
     result_dict = {}
     for x in range(1, int((n-1)**0.5)+1):
         for y in range(1, int((n-1)**0.5)+1):
@@ -45,7 +37,7 @@ def find_pair(n):
 
 
 def check_pair(n):
-    my_dict = find_pair(n)
+    my_dict = find_pairs(n)
     result_dict = {}
     for i in my_dict.items():
         if int(i[0]) >= int(i[1]):
@@ -53,38 +45,24 @@ def check_pair(n):
     return result_dict
 
 
-def task1(m, num = 4):
+def task_107(m, num=4):
+    validate_number(m, 1)
     return int(log(m-1, num))
 
 
-def task2(n):
-    if check_possibility(n):
-        print("Here there are possible pairs present as (x, y)")
-        result_lst = []
-        for i in find_pair(n).items():
-            result_lst.append(i)
-        return result_lst
+def task_243a(n):
+    if _is_prime(validate_number(n, 1)) and check_possibility(n):
+        return list(find_pairs(n).items())[0]
     else:
-        return "We can`t present your number as sums of two squares"
+        raise BaseException("We can`t present your number as sums of two squares")
 
 
-def task3(n):
-    if check_possibility(n):
-        print("Here there are possible pairs present as (x, y)")
+def task_243b(n):
+    if _is_prime(validate_number(n, 1)) and check_possibility(n):
         result_lst = []
         for i in check_pair(n).items():
             result_lst.append(i)
         return result_lst
     else:
-        return "We can`t present your number as sums of two squares"
+        raise BaseException("We can`t present your number as sums of two squares")
 
-
-if __name__ == "__main__":
-    print(f"{'-'*15}Task1{'-'*15}")
-    m = enter_number_task_1()
-    print(task1(m))
-    print(f"{'-' * 15}Task2{'-' * 15}")
-    n = enter_number_task_2_3()
-    print(task2(n))
-    print(f"{'-' * 15}Task3{'-' * 15}")
-    print(task3(n))
