@@ -27,12 +27,14 @@ def check_possibility(n):
     return n % 4 == 1
 
 
-def find_pairs(n):
+def find_pairs(n, one_already=False):
     result_dict = {}
     for x in range(1, int((n-1)**0.5)+1):
         for y in range(1, int((n-1)**0.5)+1):
             if x**2 + y**2 == n:
                 result_dict[x] = y
+                if one_already:
+                    return result_dict
     return result_dict
 
 
@@ -52,7 +54,7 @@ def task_107(m, num=4):
 
 def task_243a(n):
     if _is_prime(validate_number(n, 1)) and check_possibility(n):
-        return list(find_pairs(n).items())[0]
+        return find_pairs(n, True)
     else:
         raise BaseException("We can`t present your number as sums of two squares")
 
