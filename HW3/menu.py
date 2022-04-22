@@ -29,18 +29,18 @@ class Menu:
                    "16": task_178b, "17": task_178v, "18": task_554,
                    "19": task_178g, "20": task_178d, "21": task_555,
                    "22": task_182, "23": task_323, "24": task_560}
-        parameters = {"task_86a": (), "task_86b": (),
-                      "task_330": (), "task_87": (),
-                      "task_226": (), "task_559": (),
-                      "task_88a": (), "task_88b": (),
-                      "task_322": (), "task_107": (),
-                      "task_243a": (), "task_243b": (),
-                      "task_108": (), "task_331a": (),
-                      "task_331b": (), "task_178b": (),
-                      "task_178v": (), "task_554": (),
-                      "task_178g": (), "task_178d": (),
-                      "task_555": (), "task_182": (),
-                      "task_323": (), "task_560": ()}
+        parameters = {"task_86a": (,), "task_86b": (,),
+                      "task_330": (,), "task_87": (,),
+                      "task_226": (,), "task_559": (,),
+                      "task_88a": (,), "task_88b": (,),
+                      "task_322": (,), "task_107": (,),
+                      "task_243a": (,), "task_243b": (,),
+                      "task_108": (,), "task_331a": (,),
+                      "task_331b": (,), "task_178b": (,),
+                      "task_178v": (,), "task_554": (,),
+                      "task_178g": (,), "task_178d": (,),
+                      "task_555": (,), "task_182": (,),
+                      "task_323": (,), "task_560": (,)}
         print(self.msg["choices"])
         while True:
             command_input = input("Your choice: ")
