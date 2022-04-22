@@ -3,42 +3,39 @@ from tasks import *
 
 
 class MyTestCase(unittest.TestCase):
-    def test_task88(self):
-        number1 = 8
-        number2 = 19
-        number3 = 1109
-        self.assertEqual(task_88(number1), 8)
-        self.assertEqual(task_88(number2), 91)
-        self.assertEqual(task_88(task_88(number2)), 19)
-        self.assertEqual(task_88(number3), 9101)
+    def test_task108(self):
+        with self.assertRaises(AssertionError):
+            task_108("87hvg")
+        with self.assertRaises(AssertionError):
+            task_108(-9)
+        with self.assertRaises(AssertionError):
+            task_108(7.9)
+        self.assertEqual(task_108(2), 2)
+        self.assertEqual(task_108(1), 1)
+        self.assertEqual(task_108(9), 4)
+        self.assertEqual(task_108(8), 4)
 
-    def test_task88g(self):
-        number1 = 8
-        number2 = 19
-        number3 = 1109
-        self.assertEqual(task_88g(number1), 181)
-        self.assertEqual(task_88g(number2), 1191)
-        self.assertEqual(task_88g(task_88g(number2)), 111911)
-        self.assertEqual(task_88g(number3), 111091)
+    def test_task331a(self):
+        with self.assertRaises(AssertionError):
+            task_331a("87hvg")
+        with self.assertRaises(AssertionError):
+            task_331a(-9)
+        with self.assertRaises(AssertionError):
+            task_331a(7.9)
+        self.assertEqual(task_331a(1), [])
+        self.assertEqual(task_331a(21), [(1, 2, 4)])
+        self.assertEqual(task_331a(67), [(3, 3, 7)])
 
-    def test_task332(self):
-        number1 = 1
-        number2 = 8
-        number3 = 19
-        number4 = 1109
-        self.assertTrue(1 in task_332(number1))
-        self.assertTrue(2 in task_332(number2))
-        self.assertTrue(3 in task_332(number3))
-        self.assertTrue(22 in task_332(number4))
-        self.assertFalse(10 in task_332(number1))
-        self.assertFalse(10 in task_332(number2))
-        self.assertFalse(10 in task_332(number3))
-        self.assertFalse(10 in task_332(number4))
-        self.assertTupleEqual(task_332(number1), (0, 0, 0, 1))
-        self.assertTupleEqual(task_332(number2), (0, 0, 2, 2))
-        self.assertTupleEqual(task_332(number3), (0, 1, 3, 3))
-        self.assertTupleEqual(task_332(number4), (0, 0, 22, 25))
-
-
-if __name__ == '__main__':
-    unittest.main()
+    def test_task331b(self):
+        with self.assertRaises(AssertionError):
+            task_331b("87hvg")
+        with self.assertRaises(AssertionError):
+            task_331b(-9)
+        with self.assertRaises(AssertionError):
+            task_331b(7.9)
+        self.assertEqual(task_331b(1), [])
+        self.assertEqual(task_331b(21), [(1, 2, 4), (1, 4, 2), (2, 1, 4), (2, 4, 1), (4, 1, 2), (4, 2, 1)])
+        self.assertTrue((3, 3, 7) in task_331b(67))
+        self.assertNotEqual(task_331b(1097), [(1, 2, 4), (1, 4, 2), (2, 1, 4), (2, 4, 1), (4, 1, 2), (4, 2, 1)])
+        self.assertTrue((13, 28, 12) in task_331b(1097))
+        self.assertTrue((32, 3, 8) in task_331b(1097))
